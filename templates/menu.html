@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Vertical Menu Concept</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename= 'css/menu.css') }}">
+  <link rel='stylesheet' href='https://www.imvumafias.org/community/styles/prosilver/theme/fontello/css/fontello.css'>
+  <link rel='stylesheet' href='https://www.imvumafias.org/community/styles/prosilver/theme/fontello/css/fontello-codes.css'>
+  <link rel='stylesheet' href='https://www.imvumafias.org/community/styles/prosilver/theme/fontello/css/fontello-embedded.css'><link rel="stylesheet" href="./style.css">
+   <link rel="stylesheet" href="./style.css">-----------
+</head>
+<body>
+<!-- partial:index.partial.html -->
+
+<div class="header">
+  <h1>Animated Fixed Header (Scroll Down)</h1>
+</div>
+<div class="content">
+</div>
+
+<nav class="menu-block">
+  <ul>
+      {% for lvl1 in level1 %}
+        <li class="menu-category">
+            <span>{{ lvl1['id'] }}: {{ lvl1['alias'] }} <i class="icon icon-plus"></i></span>
+            <ul style="display: none;">
+
+                {% for lvl2 in Level2.select().where(Level2.owner_id == lvl1.id).dicts().execute() %}
+                    <li class="menu-category sub">
+                        <span>{{ lvl2['id'] }}: {{ lvl2.alias }} <i class="icon icon-plus"></i></span>
+                        <ul style="display: none;">
+
+                            {% for lvl3 in Level3.select().where(Level3.owner_id == lvl2.id).dicts().execute() %}
+                                <li><span>{{ lvl3['id'] }}: {{ lvl3['alias'] }}</span></li>
+                            {% endfor %}
+<li></li><span><a href="{{lvl2['id']}}/create3">Новая категория...</a></span></li>
+                        </ul>
+                    </li>
+                {% endfor %}
+ <li class="menu-category sub">
+        <span><a href="{{lvl1['id']}}/create2">Новая категория...</a></span>
+      </li>
+            </ul>
+        </li>
+      {% endfor %}
+      <li class="menu-category">
+        <span><a href="{{url_for('create')}}">Новая категория...</a></span>
+      </li>
+  </ul>
+</nav>
+
+
+
+<!-- <div class="card text-center">
+    <div class="card-header">
+      Featured
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    <div class="card-footer text-muted">
+      2 days ago
+    </div>
+  </div> -->
+
+
+
+<!-- partial -->
+<script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script><script  src="./script.js"></script>
+  
+  <script src = "{{ url_for('static', filename = 'JS/menu.js') }}"></script>
+
+
+</body>
+</html>

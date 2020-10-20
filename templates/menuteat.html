@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Vertical Menu Concept</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/menu.css') }}">
+    <link rel='stylesheet' href='https://www.imvumafias.org/community/styles/prosilver/theme/f..'>
+<link rel='stylesheet' href='https://www.imvumafias.org/community/styles/prosilver/theme/f..'>
+<link rel='stylesheet' href='https://www.imvumafias.org/community/styles/prosilver/theme/f..'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<nav class="menu-block">
+  <ul>
+      {% for alias in alias1 %}
+    <li class="menu-category">
+      <span>{{alias['alias']}} <i class="icon icon-minus"></i></span>
+      <ul>
+        <li class="menu-category sub">
+
+          <span>Sub Category <i class="icon icon-minus"></i></span>
+          <ul>
+            <li><span>Item</span></li>
+
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+{%endfor%}
+  <li class="menu-category">
+<span><a href="{{url_for('create')}}">Новая категория...</a></span>
+</li>
+  </ul>
+</nav>
+<!-- partial -->
+ <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script><script  src="./script.js"></script>
+<script src = "{{ url_for('static', filename = 'JS/menu.js') }}"></script>
+</body>
+</html>
