@@ -133,7 +133,7 @@ def edit(id):
             data.save()
             return redirect(url_for('index'))
 
-    return render_template('edit.html', post=post)
+    return render_template('edit.html', post=post, Level1=Level1, Level2=Level2, Level3=Level3)
 
 
 @app.route('/<int:id>/edit2', methods=('GET', 'POST'))
@@ -153,7 +153,7 @@ def edit2(id):
             data.save()
             return redirect(url_for('index'))
 
-    return render_template('edit.html', post=post)
+    return render_template('edit.html', post=post, Level1=Level1, Level2=Level2, Level3=Level3)
 
 
 @app.route('/<int:id>/edit3', methods=('GET', 'POST'))
@@ -173,7 +173,7 @@ def edit3(id):
             data.save()
             return redirect(url_for('index'))
 
-    return render_template('edit.html', post=post)
+    return render_template('edit.html', post=post, Level1=Level1, Level2=Level2, Level3=Level3)
 
 
 
