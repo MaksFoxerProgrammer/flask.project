@@ -35,7 +35,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Brand</a>
+			<a class="navbar-brand" href="{{url_for('index')}}">Brand</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -100,16 +100,16 @@
             <ul>
                 {% for lvl1 in level1 %}
                   <li class="menu-category">
-                      <span>{{ lvl1['id'] }}: {{ lvl1['alias'] }} <i class="icon icon-plus"></i></span>
+                      <span>{{ lvl1['id'] }}: {{ lvl1['alias'] }} <a href="{{lvl1['id']}}/edit">edit</a> <i class="icon icon-plus"></i></span>
                       <ul style="display: none;">
           
                           {% for lvl2 in Level2.select().where(Level2.owner_id == lvl1.id).dicts().execute() %}
                               <li class="menu-category sub">
-                                  <span>{{ lvl2['id'] }}: {{ lvl2.alias }} <i class="icon icon-plus"></i></span>
+                                  <span>{{ lvl2['id'] }}: {{ lvl2.alias }}  <a href="{{lvl2['id']}}/edit2">edit</a> <i class="icon icon-plus"></i></span>
                                   <ul style="display: none;">
           
                                       {% for lvl3 in Level3.select().where(Level3.owner_id == lvl2.id).dicts().execute() %}
-                                          <li><span> <a href="#{{ lvl3['alias'] }}"{{ lvl3['id'] }}: {{ lvl3['alias'] }}"> {{ lvl3['id'] }}: {{ lvl3['alias'] }} </a> </span></li>
+                                          <li><span> <a href="#{{ lvl3['alias'] }}"{{ lvl3['id'] }}: {{ lvl3['alias'] }}"> {{ lvl3['id'] }}: {{ lvl3['alias'] }}  </a> </span></li>
 										{# <li><a href="#sectionThree">Section Three</a></li>#}
                                       {% endfor %}
           <li></li><span><a href="{{lvl2['id']}}/create3">Новая часть...</a></span></li>

@@ -113,6 +113,9 @@ def create3(id):
     return render_template('create.html')
 
 
+
+
+
 @app.route('/<int:id>/edit', methods=('GET', 'POST'))
 def edit(id):
     post = get_post(id)
@@ -124,12 +127,6 @@ def edit(id):
         if not alias:
             flash('alias is required!')
         else:
-            # conn = get_db_connection()
-            # conn.execute('UPDATE posts SET title = ?, content = ?'
-                        #  ' WHERE id = ?',
-                        #  (title, content, id))
-            # conn.commit()
-            # conn.close()
             data = Level1(id=id)
             data.alias = alias
             data.description = description
@@ -139,15 +136,53 @@ def edit(id):
     return render_template('edit.html', post=post)
 
 
+@app.route('/<int:id>/edit2', methods=('GET', 'POST'))
+def edit2(id):
+    post = Level2.get(id)
+
+    if request.method == 'POST':
+        alias = request.form['alias']
+        description = request.form['description']
+
+        if not alias:
+            flash('alias is required!')
+        else:
+            data = Level2(id=id)
+            data.alias = alias
+            data.description = description
+            data.save()
+            return redirect(url_for('index'))
+
+    return render_template('edit.html', post=post)
+
+
+@app.route('/<int:id>/edit3', methods=('GET', 'POST'))
+def edit3(id):
+    post = Level3.get(id)
+
+    if request.method == 'POST':
+        alias = request.form['alias']
+        description = request.form['description']
+
+        if not alias:
+            flash('alias is required!')
+        else:
+            data = Level3(id=id)
+            data.alias = alias
+            data.description = description
+            data.save()
+            return redirect(url_for('index'))
+
+    return render_template('edit.html', post=post)
+
+
+
+
+
+
 @app.route('/<int:id>/delete', methods=('POST',))
 def delete(id):
     post = get_post(id)
-    # conn = get_db_connection()
-    # conn.execute('DELETE FROM posts WHERE id = ?', (id,))
-    # conn.commit()
-    # conn.close()
-    # deli = Level1.get(id=id)
-
     flash('"{}" was successfully deleted!'.format(post.alias))
     post.delete_instance()
 
