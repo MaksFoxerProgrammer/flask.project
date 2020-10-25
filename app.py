@@ -93,9 +93,9 @@ def create2(id):
             flash('Title is required!')
         else:
 
-            key = str(id) + "." + str(c2in1(id))
+            # key = str(id) + "." + str(c2in1(id))
 
-            id = Level2.create(alias=alias, description=description, owner_id=id, key=key)
+            Level2.create(alias=alias, description=description, owner_id=id)
             return redirect(url_for('index'))
     return render_template('create.html')
 
