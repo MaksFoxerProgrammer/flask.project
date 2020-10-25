@@ -26,6 +26,14 @@ def get_post(post_id):
     return post
 
 
+def c2in1(ownid):
+    # Достать все записи второго уровня в данной категории
+    # В цикле найти их число
+    lvl2 = Level2.select(owner_id=ownid)
+
+    pass
+
+
 # @app.route('/')
 # def index():
 #     posts = Level1.select()
@@ -34,6 +42,14 @@ def get_post(post_id):
 
 @app.route('/')
 def index():
+    level1 = Level1.select()
+    level2 = Level2.select()
+    level3 = Level3.select()
+    return render_template('index.html',level1=level1,level2=level2,level3=level3,Level1=Level1, Level2=Level2, Level3=Level3)
+
+
+@app.route('/menu')
+def menu():
     level1 = Level1.select()
     level2 = Level2.select()
     level3 = Level3.select()
@@ -55,7 +71,14 @@ def create():
         if not alias:
             flash('Title is required!')
         else:
-            Level1.create(alias=alias, description=description)
+            id = Level1.create(alias=alias, description=description)
+
+            data = Level1(id=id)
+            k = id
+            print(k)
+            data.key = k
+            data.save()
+
             return redirect(url_for('index'))
     return render_template('create.html')
 
@@ -65,10 +88,14 @@ def create2(id):
     if request.method == 'POST':
         alias = request.form['alias']
         description = request.form['description']
+
         if not alias:
             flash('Title is required!')
         else:
-            Level2.create(alias=alias, description=description,owner_id=id)
+
+            key = str(id) + "." + str(c2in1(id))
+
+            id = Level2.create(alias=alias, description=description, owner_id=id, key=key)
             return redirect(url_for('index'))
     return render_template('create.html')
 

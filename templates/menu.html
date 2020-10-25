@@ -2,21 +2,21 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Vertical Menu Concept</title>
+  <title>Проект</title>
   <link rel="stylesheet" href="{{ url_for('static', filename= 'css/menu.css') }}">
   <link rel='stylesheet' href='https://www.imvumafias.org/community/styles/prosilver/theme/fontello/css/fontello.css'>
   <link rel='stylesheet' href='https://www.imvumafias.org/community/styles/prosilver/theme/fontello/css/fontello-codes.css'>
-  <link rel='stylesheet' href='https://www.imvumafias.org/community/styles/prosilver/theme/fontello/css/fontello-embedded.css'><link rel="stylesheet" href="./style.css">
-   <link rel="stylesheet" href="./style.css">-----------
+  <link rel='stylesheet' href='https://www.imvumafias.org/community/styles/prosilver/theme/fontello/css/fontello-embedded.css'>
+  <!-- <link rel="stylesheet" href="./style.css"> -->
+   <!-- <link rel="stylesheet" href="./style.css"> -->
+   <link rel="stylesheet" href="{{ url_for('static', filename= 'css/menu.css') }}">
 </head>
-<body>
-<!-- partial:index.partial.html -->
 
-<div class="header">
-  <h1>Animated Fixed Header (Scroll Down)</h1>
-</div>
-<div class="content">
-</div>
+
+<body>
+
+
+
 
 <nav class="menu-block">
   <ul>
@@ -31,14 +31,14 @@
                         <ul style="display: none;">
 
                             {% for lvl3 in Level3.select().where(Level3.owner_id == lvl2.id).dicts().execute() %}
-                                <li><span>{{ lvl3['id'] }}: {{ lvl3['alias'] }}</span></li>
+                                <li><span> <a href="?{{ lvl3['id'] }}: {{ lvl3['alias'] }}"> {{ lvl3['id'] }}: {{ lvl3['alias'] }} </a> </span></li>
                             {% endfor %}
-<li></li><span><a href="{{lvl2['id']}}/create3">Новая категория...</a></span></li>
+<li></li><span><a href="{{lvl2['id']}}/create3">Новая часть...</a></span></li>
                         </ul>
                     </li>
                 {% endfor %}
  <li class="menu-category sub">
-        <span><a href="{{lvl1['id']}}/create2">Новая категория...</a></span>
+        <span><a href="{{lvl1['id']}}/create2">Новая подкатегория...</a></span>
       </li>
             </ul>
         </li>
@@ -50,20 +50,6 @@
 </nav>
 
 
-
-<!-- <div class="card text-center">
-    <div class="card-header">
-      Featured
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-    <div class="card-footer text-muted">
-      2 days ago
-    </div>
-  </div> -->
 
 
 

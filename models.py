@@ -2,7 +2,7 @@ from peewee import *
 
 # Создаем соединение с нашей базой данных
 # В нашем примере у нас это просто файл базы
-conn = SqliteDatabase('work.db3')
+conn = SqliteDatabase('work.db')
 # print("Подключение: OK")
 
 # Определяем базовую модель о которой будут наследоваться остальные
@@ -49,3 +49,4 @@ Level1.create_table()
 Level2.create_table()
 Level3.create_table()
 
+print(" * ConnectToDb........OK")
