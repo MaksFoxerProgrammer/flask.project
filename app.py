@@ -80,7 +80,7 @@ def create():
             data.save()
 
             return redirect(url_for('index'))
-    return render_template('create.html')
+    return render_template('create.html', Level1=Level1, Level2=Level2, Level3=Level3)
 
 
 @app.route('/<int:id>/create2', methods=('GET', 'POST'))
@@ -97,7 +97,7 @@ def create2(id):
 
             Level2.create(alias=alias, description=description, owner_id=id)
             return redirect(url_for('index'))
-    return render_template('create.html')
+    return render_template('create.html', Level1=Level1, Level2=Level2, Level3=Level3)
 
 
 @app.route('/<int:id>/create3', methods=('GET', 'POST'))
@@ -110,7 +110,7 @@ def create3(id):
         else:
             Level3.create(alias=alias, description=description,owner_id=id)
             return redirect(url_for('index'))
-    return render_template('create.html')
+    return render_template('create.html', Level1=Level1, Level2=Level2, Level3=Level3)
 
 
 
