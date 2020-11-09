@@ -33,7 +33,6 @@ def c2in1(ownid):
     # Достать все записи второго уровня в данной категории
     # В цикле найти их число
     lvl2 = Level2.select(owner_id=ownid)
-
     pass
 
 
