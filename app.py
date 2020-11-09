@@ -56,6 +56,36 @@ def menu():
     level1 = Level1.select()
     level2 = Level2.select()
     level3 = Level3.select()
+    """
+        dict = {
+            {
+                'name' = ""
+                'desc' = ""
+                'lvl2' = {
+                    {
+                        'name' = ""
+                        'desc' = ""
+                        'lvl3' = {
+                            {
+                                'name' = ""
+                                'desc' = ""
+                            },
+                            {...}
+                        }
+                    },
+                    {...}
+                }
+            }, {--//--}, {...}
+        }
+        =====================================
+        dict = {}
+        for lvl1 in Level1:
+            dict.append(
+                name = name
+                desc = desc
+                lvl2 = ###
+            )
+    """
     return render_template('menu.html',level1=level1,level2=level2,level3=level3,Level1=Level1, Level2=Level2, Level3=Level3)
 
 
